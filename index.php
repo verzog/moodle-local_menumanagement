@@ -16,21 +16,10 @@ if (!empty($CFG->forceloginforprofiles)) {
 	require_login();
 }
 
-$cssFile = file_get_contents(new moodle_url('/local/menumanagement/assets/css/style.css'));
-
-//[[setting:sectionhovercolor]]
-$sectionhovercolor = get_config('theme_newlearnbook','sectionhovercolor');
-$customcss = '';
-if (!empty($sectionhovercolor)) {
-    $customcss = $sectionhovercolor;
-}
-$tag = '[[setting:sectionhovercolor]]';
-$css = str_replace($tag, $customcss, $cssFile);
-
 $PAGE->requires->jquery();
 //$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery-1.11.1.js'),true);
 $PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery.fonticonpicker.min.js'),true);
-//$PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/style.css'));
+$PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/style.css'));
 $PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery.nestable.js'));
 $PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/menudash.js'));
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fonticonpicker.css'));
@@ -42,17 +31,17 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Menu Management');
 $PAGE->set_heading('Menu Management');
 //$PAGE->set_pagetype('trainingreport');
-$PAGE->set_pagelayout('trainingreport');
+$PAGE->set_pagelayout('base');
 
-$PAGE->navbar->add('Administration');
-$PAGE->navbar->add('Admin Dashboard', new moodle_url('/local/admindashboard/index.php'));
+//$PAGE->navbar->add('Administration');
+//$PAGE->navbar->add('Admin Dashboard', new moodle_url('/local/admindashboard/index.php'));
 $PAGE->navbar->add('Menu Management', new moodle_url('index.php'));
 
 $message = '';
 if(isset($_POST) && isset($_POST['menu-items-list']))
 {
     $insertcustomnodesusers = $_POST['menu-items-list'];
-    set_config('insertcustomnodesusers', $insertcustomnodesusers,'local_boostnavigation');
+    set_config('insertcustomnodesusers', $insertcustomnodesusers,'local_menumanagement');
     $message = "Menu items saved successfully.";
     $type = "success";    
 }
@@ -60,15 +49,13 @@ if(isset($_POST) && isset($_POST['menu-items-list']))
 echo $OUTPUT->header();
 ?>
 
-<style> <?php echo $css; ?> </style>
 
 <?php
 if($message != '')
     \core\notification::add($message, $type);
 
-$sectionHeaderColor = get_config('theme_newlearnbook','sectionheadercolor');
-$userMenuItems = get_config('local_boostnavigation','insertcustomnodesusers');
-//$adminMenuItems = get_config('local_boostnavigation','insertcustomnodesadmins');
+$userMenuItems = get_config('local_menumanagement','insertcustomnodesusers');
+$menuLabel = get_config('local_menumanagement','menulabel');
 
 
 $menuItems = menumanagement_model::createMenuItemsNew($userMenuItems);
@@ -84,12 +71,12 @@ unset($menuItems['totalItems']);
     
 <div class="card" id="user-menu">
             
-    <div class="card-header" role="tab" id="heading1" style="background-color: <?php echo $sectionHeaderColor;?>;">
+    <div class="card-header sectionheadercolor-class" role="tab" id="heading1">
                         
         <!--data-toggle="collapse"  href="#collapse1" -->
         <a style="text-decoration: none;color:white;" class="clickacc" data-parent="#accordion" aria-expanded="true" aria-controls="collapse1">
                 <h4 class="mb-0" style="font-weight: 100;margin-top: 7px;">
-                <i class="fa fa-list-alt"></i>&nbsp;Learnbook Panel
+                <i class="fa fa-list-alt"></i>&nbsp;<?php echo $menuLabel; ?>
 <!--                <span style="float:right;" class="expandspan down"><i class="fa fa-caret-down" style="font-size: 22px;"></i></span>
                 <span style="float:right;" class="expandspan right"><i class="fa fa-caret-right" style="font-size: 22px;"></i></span>-->
                 </h4>

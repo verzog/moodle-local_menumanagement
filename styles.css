@@ -1,0 +1,277 @@
+/*********************below css is from previous local_boostnavigation plugin which is merge into this plugin*************************/
+
+/* stylelint-disable declaration-no-important */
+/* stylelint-disable max-line-length */
+
+/* Collapse nodes feature.
+   This feature is currently only possible for the mycourses, the coursesections and the activities node which are directly
+   supported by this plugin as well as the custom nodes which can be added with this plugin.
+   In a future version of this plugin, this might be done in a more general and lighter way. */
+/* Show all second-level nav drawer items which have the attribute not hidden. */
+.list-group-item[data-key="mycourses"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="mycourses"][data-hidden="0"],
+.list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementcoursesections"][data-hidden="0"],
+.list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementactivities"][data-hidden="0"],
+.list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"] ~ .list-group-item[data-parent-key^="localmenumanagementcustom"][data-hidden="0"] {
+    display: block;
+}
+/* Hide all second-level nav drawer items which have the attribute hidden. */
+.list-group-item[data-key="mycourses"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="mycourses"][data-hidden="1"],
+.list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementcoursesections"][data-hidden="1"],
+.list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementactivities"][data-hidden="1"],
+.list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"] ~ .list-group-item[data-parent-key^="localmenumanagementcustom"][data-hidden="1"] {
+    display: none;
+}
+/* Add the icon for the expanded node state. */
+.jsenabled .list-group-item[data-key="mycourses"][data-isexpandable="1"][data-collapse="0"] > div::after,
+.jsenabled .list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"][data-collapse="0"] > div::after,
+.jsenabled .list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"][data-collapse="0"] > div::after,
+.jsenabled .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"][data-collapse="0"] > div::after {
+    content: url([[pix:i/dropdown]]);
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+/* Add the icon for the collapsed node state. */
+.jsenabled .list-group-item[data-key="mycourses"][data-isexpandable="1"][data-collapse="1"] > div::after,
+.jsenabled .list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"][data-collapse="1"] > div::after,
+.jsenabled .list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"][data-collapse="1"] > div::after,
+.jsenabled .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"][data-collapse="1"] > div::after {
+    content: url([[pix:t/collapsed]]);
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+/* Make sure that the icon does not overlap with the node text. */
+.jsenabled .list-group-item[data-key="mycourses"][data-isexpandable="1"] > div,
+.jsenabled .list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"] > div,
+.jsenabled .list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] > div,
+.jsenabled .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"] > div {
+    /*padding-right: 1rem;*/
+}
+/* Set the cursor for the collapsible nodes. */
+.jsenabled .list-group-item[data-key="mycourses"][data-isexpandable="1"],
+.jsenabled .list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"],
+.jsenabled .list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"],
+.jsenabled .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"] {
+    cursor: pointer;
+}
+
+/* Add activity nodes feature */
+/* Add an indent to the activity nodes because this isn't possible with Navigation node API.
+   Setting !important is necessary because otherwise the child nodes' m-l-0 class would overrule our margin. */
+/* TODO: Remove when MDL-61298 is integrated to Moodle core. */
+.list-group-item[data-key^="localmenumanagementactivity"] > div {
+    margin-left: 1rem !important;
+}
+
+/* Custom nodes feature. */
+/* Add an indent to the custom child nodes because this isn't possible with Navigation node API.
+   Setting !important is necessary because otherwise the child nodes' m-l-0 class would overrule our margin. */
+.list-group-item[data-parent-key^="localmenumanagementcustom"] > div {
+    margin-left: 1rem !important;
+}
+/* Add a margin-top to the custom bottom nodes section because this isn't possible with Navigation node API. */
+.list-group-item[data-key="localmenumanagementcustombottomusers1"],
+.list-group-item[data-key="localmenumanagementcustombottomadmins1"] {
+    margin-top: 1rem;
+}
+/* The Navigation node API highlights every node as active if its URL matches the current page URL.
+   As we have to add a URL even to collapsible custom nodes, this might have side-effects. Let's prevent the collapsible
+   custom nodes from being highlighted. */
+.list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"][data-isactive="1"] {
+    font-weight: normal;
+}
+/* Add a plugin-specific class to shrink fa-icons. This is needed for the custom nodes' icons.
+   Font-Awesome 5 will contain a similar class officially, but currently Moodle still uses Font-Awesome 4.. */
+.local-boostnavigation-fa-sm {
+    font-size: 0.5em !important;
+    margin-top: 1em !important;
+}
+
+#nav-drawer .list-group-item[data-parent-key="myhome"][data-key^="sitesettings"] {
+    background-color:#fff ;
+    color: #555 ;
+}
+
+/*apply main menu color to all items*/
+#nav-drawer .list-group-item-action{
+    background-color:#fff ;
+    color: #555 ;
+}
+
+/*apply sub menu color*/
+#nav-drawer .list-group-item:not([data-parent-key="myhome"]) {
+    background-color:#f4f6f9 ;
+    color: #555 ;
+}
+
+#nav-drawer .list-group-item[data-key="learnbookpanel"] {
+    background-color: #1abc9c ;
+    color: white ;
+}
+
+#nav-drawer .list-group-item[data-key="sitesettings"] {
+    background-color:#fff ;
+    color: #555 ;
+}
+
+/*.list-group-item-action:hover{
+    background-color: red !important;
+    color:white !important;
+}*/
+
+/*highlight active note*/
+
+#nav-drawer .list-group-item[data-isactive="1"][data-isexpandable="0"] {
+    background-color: #f5f5f5 ;
+}
+
+#nav-drawer .list-group-item[data-isexpandable="1"]:focus{
+    background-color:#fff ;
+    color: #555 ;
+}
+
+#nav-drawer .list-group-item[data-isexpandable="1"]:hover{
+    /*background-color:unset !important;*/
+    background-color: #f5f5f5 ;
+    font-weight: bold !important;
+}
+
+#nav-drawer .list-group-item-action:hover {
+    background-color: #f5f5f5 ;
+    font-weight: bold !important;
+}
+
+
+
+/*mini - navbar - icons*/
+
+#nav-drawer .list-group{
+    text-align: left;
+}
+
+#nav-drawer.closed .list-group{
+    text-align: center;
+}
+
+.jsenabled #nav-drawer.closed .list-group-item[data-isexpandable="1"]:after{
+    display:none;
+}
+
+.jsenabled #nav-drawer.closed .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"][data-collapse="0"] > div::after{
+    content:'';
+    display:none;
+}
+
+.jsenabled #nav-drawer.closed .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"][data-collapse="1"] > div::after{
+    content:'';
+    display:none;
+}
+
+
+#nav-drawer.closed .list-group .menu-title{
+    display:none;
+}
+
+#nav-drawer.closed .list-group-item:not([data-parent-key="myhome"]) {
+    display:none;
+}
+
+#page-navbar .breadcrumb-item .menu-title{
+    display:unset !important;
+}
+
+/*hide courses,grades participants menu links*/
+.list-group-item[data-key="coursehome"] {
+    display:none;
+}
+.list-group-item[data-key="participants"] {
+    display:none;
+}
+.list-group-item[data-key="grades"] {
+    display:none;
+}
+
+/*hide site administrtator which is added by default by moodle*/
+.list-group-item[data-key="sitesettings"] {
+    display:none;
+}
+
+#nav-drawer.closed .list-group-item[data-key="sitesettings"] {
+    display:none;
+}
+
+.panel-header{
+    display:block;
+}
+
+.panel-short-header{
+    display:none;
+}
+
+#nav-drawer.closed .panel-header{
+    display:none;
+}
+
+#nav-drawer.closed .panel-short-header{
+    display:block
+}
+
+#nav-drawer.closed .list-group-item[data-key="learnbookpanel"]{
+    display: none;
+}
+
+
+/*@media screen and (min-width: 1200px) {
+
+    body:not(.drawer-open-left){
+        margin-left: 45px;
+    }
+
+    #page-login-index{
+        margin-left: 0;
+    }
+
+    #page-login-signup{
+        margin-left: 0;
+    }
+
+    body.drawer-ease{
+        margin-left: 45px;
+    }
+
+}*/
+
+/*@media screen and (min-width: 420px) and (max-width: 1200px) {
+
+    body.drawer-open-left {
+        margin-left: 0px !important;
+    }
+
+    #nav-drawer.closed {
+        left: -305px !important;
+    }
+
+}*/
+
+/*left side menu nav css for icons only ui*/
+#nav-drawer.closed {
+    left: 0;
+    width: 60px;
+    overflow: hidden;
+    padding-left:0 ;
+    padding-right:0 ;
+    webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+@media screen and (max-width: 420px) {
+    #nav-drawer.closed {
+        left: -305px;
+    }
+}
+
+
+/*********************above css is from previous local_boostnavigation plugin which is merge into this plugin*************************/

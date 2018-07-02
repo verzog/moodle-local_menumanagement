@@ -14,18 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * This plugin provides access to Moodle data in form of analytics and reports in real time.
- *
- *
- * @package    local_intelliboard
- * @copyright  2017 IntelliBoard, Inc
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @website    None
- */
 
 $plugin->version  = 2018052801;
-$plugin->requires = 2011120500;
-$plugin->release = '4.8.3';
+$plugin->requires = 2017111300;
+$plugin->release = '1.0';
 $plugin->maturity = MATURITY_STABLE;
 $plugin->component = 'local_menumanagement';
+$plugin->dependencies = array('theme_boost' => 2017111300);

@@ -109,7 +109,7 @@ p { line-height: 1.5em; }
     box-sizing: border-box; -moz-box-sizing: border-box;
     /*box-shadow: 1px 3px 12px -4px black;*/
 }
-.dd3-content:hover {  background: [[setting:sectionhovercolor]]; color:white; }
+.dd3-content:hover {  background: #2a6a97; color:white; }
 
 .dd-dragel > .dd3-item > .dd3-content { margin: 0; }
 
@@ -207,4 +207,9 @@ p { line-height: 1.5em; }
         padding-left: 0;
     }
 
-});
+}
+
+.sectionheadercolor-class{
+    background-color: #3498db;
+    color: white;
+}

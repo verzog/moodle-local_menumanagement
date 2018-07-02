@@ -160,7 +160,7 @@ class menumanagement_model {
         
         // Initialize counter which is later used for the node IDs.
         $nodecount = 0;
-        $keyprefix = "localboostnavigationcustomrootusers";
+        $keyprefix = "localmenumanagementcustomrootusers";
         $items = array();
         $parentCnt = 0;
         

@@ -88,6 +88,11 @@
     margin-top: 1em !important;
 }
 
+/*hide all the unwanted menu items that are not generated from menu management*/
+#nav-drawer .list-group .list-group-item:not([data-key*="localmenumanagementcustomrootusers"]){
+    display: none;
+}
+
 #nav-drawer .list-group-item[data-parent-key="myhome"][data-key^="sitesettings"] {
     background-color:#fff ;
     color: #555 ;
@@ -105,15 +110,21 @@
     color: #555 ;
 }
 
-#nav-drawer .list-group-item[data-key="learnbookpanel"] {
+#nav-drawer .list-group .list-group-item[data-key="learnbookpanel"] {
     background-color: #1abc9c ;
     color: white ;
+    display:block;
 }
 
 #nav-drawer .list-group-item[data-key="sitesettings"] {
     background-color:#fff ;
     color: #555 ;
 }
+
+#nav-drawer .list-group .list-group-item[data-key="addblock"] {
+    display:block;
+}
+
 
 /*.list-group-item-action:hover{
     background-color: red !important;

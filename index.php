@@ -26,7 +26,7 @@ $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fon
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fonticonpicker.grey.min.css'));
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/font-awesome.css'));
 
-$PAGE->set_url(new moodle_url("/local/menumanagement/index.php", array()));
+$PAGE->set_url(new moodle_url("/local/menumanagement", array()));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Menu Management');
 $PAGE->set_heading('Menu Management');
@@ -35,7 +35,7 @@ $PAGE->set_pagelayout('base');
 
 //$PAGE->navbar->add('Administration');
 //$PAGE->navbar->add('Admin Dashboard', new moodle_url('/local/admindashboard/index.php'));
-$PAGE->navbar->add('Menu Management', new moodle_url('index.php'));
+//$PAGE->navbar->add('Menu Management', new moodle_url('index.php'));
 
 $message = '';
 if(isset($_POST) && isset($_POST['menu-items-list']))

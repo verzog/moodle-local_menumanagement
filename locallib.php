@@ -64,6 +64,8 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
         $keyprefix='localmenumanagementcustomrootusers', $showinflatnavigation=true, $collapse=false,
         $collapsedefault=false) {
     global $USER;
+    //get context
+    $context = context_system::instance();
 
     // Initialize counter which is later used for the node IDs.
     $nodecount = 0;
@@ -97,9 +99,16 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                 $nodeurl = $menuItem->link;
                 $fontIcon = $menuItem->icon;  
                 $adminonly = $menuItem->adminonly;
+                $capability = $menuItem->capability;
+
+                if($adminonly && !is_siteadmin()){
+                    $nodevisible = false; 
+                }
+                            
                 
-                if($adminonly && !is_siteadmin())
-                    $nodevisible = false;                
+                if(!empty($capability) && !has_capability($capability, $context)){
+                    $nodevisible = false;
+                }
             }
             
             if($nodevisible)
@@ -175,6 +184,7 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                         $nodeurl = $childItem->link;
                         $fontIcon = $childItem->icon;  
                         $adminonly = $childItem->adminonly;
+                        $capability = $childItem->capability;
                         
                         if($fontIcon != NULL)
                             $nodetitle = "<i class='".$fontIcon." fa-2' aria-hidden='true' style='font-size:18px;'></i><span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>"; 

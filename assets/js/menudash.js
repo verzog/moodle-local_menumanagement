@@ -40,6 +40,8 @@ $(document).ready(function(){
         source: icons
 //        theme: 'fip-darkgrey'
     });
+	
+	$('#capability_selection').selectize();
 
 
     // activate Nestable for list 1
@@ -75,7 +77,12 @@ $(document).ready(function(){
                     itemArr[cnt]['link'] = $(this).attr('data-link');
                     
                     itemArr[cnt]['adminonly'] = $(this).attr('data-adminonly');
-                    
+					
+					if($(this).attr('data-capability') != '')
+						itemArr[cnt]['capability'] = $(this).attr('data-capability');
+                    else
+						itemArr[cnt]['capability'] = '';
+					
                     if($(this).attr('data-icon') != 'fip-icon-block')
                         itemArr[cnt]['icon'] = $(this).attr('data-icon');                                                            
                     else
@@ -97,6 +104,10 @@ $(document).ready(function(){
                                 itemArr[cnt]["child"][childCnt]['label'] = $(this).attr('data-label');
                                 itemArr[cnt]["child"][childCnt]['link'] = $(this).attr('data-link');
                                 itemArr[cnt]["child"][childCnt]['adminonly'] = 0;  //child cannot be admin only menu item
+								if($(this).attr('data-capability') != '')
+									itemArr[cnt]["child"][childCnt]['capability'] = $(this).attr('data-capability');
+								else
+									itemArr[cnt]["child"][childCnt]['capability'] = '';
                                 
                                 if($(this).attr('data-icon') != 'fip-icon-block')
                                     itemArr[cnt]["child"][childCnt]['icon'] = $(this).attr('data-icon');
@@ -129,6 +140,7 @@ $(document).ready(function(){
         var label = $("#label").val(),
         link = $("#link").val(),
         id = $("#id").val(),
+		capability = $("#capability_selection").val(),
         adminonly = 0;
         
         if($("#adminonly").is(':checked'))
@@ -142,7 +154,7 @@ $(document).ready(function(){
             $("li[data-id='" + id +"']").attr('data-label',label);
             $("li[data-id='" + id +"']").attr('data-link',link);
             $("li[data-id='" + id +"']").attr('data-adminonly',adminonly);
-            
+            $("li[data-id='" + id +"']").attr('data-capability',capability);
             //get selected icon
             var iconClass = $(".selected-icon i").attr('class');
             if(iconClass)
@@ -156,6 +168,7 @@ $(document).ready(function(){
             $("#id").val('');
             $("#add-item").text('Add');
             $(".selected-icon i").attr('class','fip-icon-block');
+			$('#capability_selection')[0].selectize.setValue('');
             $('#adminonly').prop('checked', false);
         }
         else
@@ -184,6 +197,7 @@ $(document).ready(function(){
             $('#new-item .dd-item').attr('data-link',link);
             $('#new-item .dd-item').attr('data-label',label);
             $('#new-item .dd-item').attr('data-adminonly',adminonly);
+			$('#new-item .dd-item').attr('data-capability',capability);
             
             //get selected icon
             var iconClass = $(".selected-icon i").attr('class');
@@ -223,18 +237,20 @@ $(document).ready(function(){
             $("#id").val('');
             $("#add-item").text('Add');
             $(".selected-icon i").attr('class','fip-icon-block');
+			$('#capability_selection')[0].selectize.setValue('');
             $('#adminonly').prop('checked', false);
         
         }
                
     });
     
-    $(".reset").click(function(){    
+    $(document).on("click",".reset",function() {   
         $("#label").val('');
         $("#link").val('');
         $("#id").val('');
         $("#add-item").text('Add');
         $(".selected-icon i").attr('class','fip-icon-block');
+		$('#capability_selection')[0].selectize.setValue('');
         $('#adminonly').prop('checked', false);
         
     });
@@ -245,6 +261,7 @@ $(document).ready(function(){
         var link = $(".link-text[data-id='"+id+"']").text();
         var icon = $("li[data-id='" + id +"']").attr('data-icon');
         var adminonly = $("li[data-id='" + id +"']").attr('data-adminonly');
+		var capability = $("li[data-id='" + id +"']").attr('data-capability');
         
         //if adminonly item is dragged in any child item then we should unset adminonly check box
         var parent = $("li[data-id='" + id +"']").parent();
@@ -259,11 +276,14 @@ $(document).ready(function(){
         $("#link").val(link);
         $(".selected-icon i").attr('class',icon);
         
-        if(adminonly == 1)
-            $('#adminonly').prop('checked', true);
-        else
-            $('#adminonly').prop('checked', false);
+        if(adminonly == 1){
+			$('#adminonly').prop('checked', true);
+		}else{
+			$('#adminonly').prop('checked', false);
+		}
         
+		$('#capability_selection')[0].selectize.setValue(capability);   
+	
         $("#add-item").text('Update');
         
         $("#label").focus();
@@ -341,7 +361,8 @@ $(document).ready(function(){
     {
         updateOutput($('#nestable').data('output', $('#nestable-output')));
         
-        $('#menu-items').submit();
+		$('#menu-items').submit();
+        
     });            
 
 });

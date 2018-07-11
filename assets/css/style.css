@@ -213,3 +213,7 @@ p { line-height: 1.5em; }
     background-color: #3498db;
     color: white;
 }
+
+.selectize-input > input{
+    width: 90% !important;
+}

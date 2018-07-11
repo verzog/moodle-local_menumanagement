@@ -135,7 +135,7 @@ class menumanagement_model {
 //            if($value['icon'] != NULL && $value['icon'] != '')
 //                $value['icon'] = "fa ".$value['icon'];
             
-            $html.= '<li class="dd-item dd3-item" data-adminonly="'.$value['adminonly'].'" data-icon="'.$value['icon'].'" data-link="'.$value['link'].'" data-label="'.$value['label'].'" data-id="'.$value['id'].'" >
+            $html.= '<li class="dd-item dd3-item" data-adminonly="'.$value['adminonly'].'" data-capability="'.$value['capability'].'" data-icon="'.$value['icon'].'" data-link="'.$value['link'].'" data-label="'.$value['label'].'" data-id="'.$value['id'].'" >
                         <div class="dd-handle dd3-handle"><i class="fa fa-arrows drag-icon" aria-hidden="true"></i></div>
                         <div class="dd3-content"><span class="label-text" data-id="'.$value['id'].'" id="label_show'.$value['id'].'" data-editable><i class="fa '.$value['icon'].'" style="font-size:15px;"></i>&nbsp;'.$value['label'].'</span> 
                             <span class="span-right"><span class="link-text" data-id="'.$value['id'].'" id="link_show'.$value['id'].'" data-editable>'.$value['link'].'</span> &nbsp;&nbsp; 
@@ -176,7 +176,8 @@ class menumanagement_model {
                 $nodeischild = false;
                 $nodekey = null;
                 $fontIcon = null;
-                
+                $capability = null;
+
                 if(isset($menuItem->label))
                 {
                     $nodetitle = $menuItem->label;
@@ -184,6 +185,7 @@ class menumanagement_model {
                     $nodeurl = $menuItem->link;
                     $fontIcon = $menuItem->icon;  
                     $adminonly = $menuItem->adminonly;
+                    $capability = $menuItem->capability;
                 }
                                 
                 
@@ -195,6 +197,7 @@ class menumanagement_model {
                     $parentItem['link'] = $nodeurl;
                     $parentItem['icon'] = $fontIcon;
                     $parentItem['adminonly'] = $adminonly;
+                    $parentItem['capability'] = $capability;
                     $parentItem['id'] = $menuItem->id;
                     
                     // Generate node key.
@@ -225,6 +228,19 @@ class menumanagement_model {
         return $items;
         
         
+    }
+
+    public static function getAllCapability(){
+        global $DB;
+        $capabilities = $DB->get_records_sql("SELECT * FROM mdl_capabilities");
+        $selection = "<select name='capability' id='capability_selection' class=''>";
+        $selection .= "<option value=''>Select Role Capability</option>";
+        foreach($capabilities as $capability){
+            $capdes = $capability->component.":".get_capability_string($capability->name);
+            $selection .= "<option value='{$capability->name}'>{$capdes}</option>";
+        }
+        $selection .="</select>";
+        return $selection;
     }
 }
 	

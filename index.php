@@ -19,12 +19,14 @@ if (!empty($CFG->forceloginforprofiles)) {
 $PAGE->requires->jquery();
 //$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery-1.11.1.js'),true);
 $PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery.fonticonpicker.min.js'),true);
+$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/selectize.js'),true);
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/style.css'));
-$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery.nestable.js'));
-$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/menudash.js'));
+$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery.nestable.js'),true);
+$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/menudash.js'),true);
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fonticonpicker.css'));
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fonticonpicker.grey.min.css'));
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/font-awesome.css'));
+$PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/selectize.css'));
 
 $PAGE->set_url(new moodle_url("/local/menumanagement", array()));
 $PAGE->set_context(context_system::instance());
@@ -108,7 +110,9 @@ unset($menuItems['totalItems']);
               <input type="checkbox" class="" value="" name="adminonly" id="adminonly" style="width: 20px;height: 15px;">Admin Only
             </label>
         </div>
-       
+        <div class="form-control">
+            <?php print menumanagement_model::getAllCapability(); ?>
+        </div>
         <span class="form-control" style="border:none;padding-left: 0;">
         <button type="button" id="add-item" class="btn btn-success">Add</button>&nbsp;
         <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;height: 33px;">      

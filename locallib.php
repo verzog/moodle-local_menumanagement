@@ -118,7 +118,7 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                 $pixicon = null;
                                
                 if($fontIcon != NULL)
-                    $nodetitle = "<i class='".$fontIcon." fa-2' aria-hidden='true' style='font-size:18px;'></i><span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>"; 
+                    $nodetitle = "<div class='row'><span class='".$fontIcon." fa-2x col-sm-1' aria-hidden='true' style='font-size:18px;'></span><span title='$nodetitle' class='menu-title col-sm-10'>$nodetitle</span></div>"; 
                 else
                     $nodetitle = "<span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>";
                
@@ -187,7 +187,7 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                         $capability = $childItem->capability;
                         
                         if($fontIcon != NULL)
-                            $nodetitle = "<i class='".$fontIcon." fa-2' aria-hidden='true' style='font-size:18px;'></i><span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>"; 
+                            $nodetitle = "<div class='row'><span class='".$fontIcon." fa-2x col-sm-1' aria-hidden='true' style='font-size:18px;'></span><span title='$nodetitle' class='menu-title col-sm-10'>$nodetitle</span></div>"; 
                         else                        
                             $nodetitle = "<span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;&nbsp;$nodetitle</span>";
                         

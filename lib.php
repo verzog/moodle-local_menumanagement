@@ -31,6 +31,7 @@ defined('MOODLE_INTERNAL') || die();
 function local_menumanagement_extend_navigation(global_navigation $navigation) {
     global $CFG, $PAGE, $COURSE;
 
+    $PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/menuhighlight.js'),true);
     // Fetch config.
     //$config = get_config('local_menumanagement');
     $config = new stdClass();

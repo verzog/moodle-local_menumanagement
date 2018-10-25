@@ -15,7 +15,9 @@ if (!empty($CFG->forceloginforprofiles)) {
 } else if (!empty($CFG->forcelogin)) {
 	require_login();
 }
-
+if (!is_siteadmin($USER)) {
+ print_error('accessdenied', 'admin');
+}
 $PAGE->requires->jquery();
 //$PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery-1.11.1.js'),true);
 $PAGE->requires->js(new moodle_url('/local/menumanagement/assets/js/jquery.fonticonpicker.min.js'),true);

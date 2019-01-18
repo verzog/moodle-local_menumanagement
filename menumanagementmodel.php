@@ -123,7 +123,6 @@ class menumanagement_model {
     
     public static function getMenu($items,$class = 'dd-list') 
     {
-
         $id = "menu-id";
         if($class == 'child')
             $id = '';
@@ -131,11 +130,11 @@ class menumanagement_model {
         //$html = "<ol class=\"".$class."\" id=\"menu-id\">";
 
         foreach($items as $key=>$value) {
-            
+
 //            if($value['icon'] != NULL && $value['icon'] != '')
 //                $value['icon'] = "fa ".$value['icon'];
-            
-            $html.= '<li class="dd-item dd3-item" data-adminonly="'.$value['adminonly'].'" data-capability="'.$value['capability'].'" data-icon="'.$value['icon'].'" data-link="'.$value['link'].'" data-label="'.$value['label'].'" data-id="'.$value['id'].'" >
+            $dataLabel = isset($value['data-label']) ? $value['data-label'] : $value['label'];
+            $html.= '<li class="dd-item dd3-item" data-adminonly="'.$value['adminonly'].'" data-capability="'.$value['capability'].'" data-icon="'.$value['icon'].'" data-link="'.$value['link'].'" data-label="'. $dataLabel .'" data-id="'.$value['id'].'" >
                         <div class="dd-handle dd3-handle"><i class="fa fa-arrows drag-icon" aria-hidden="true"></i></div>
                         <div class="dd3-content"><span class="label-text" data-id="'.$value['id'].'" id="label_show'.$value['id'].'" data-editable><i class="fa '.$value['icon'].'" style="font-size:15px;"></i>&nbsp;'.$value['label'].'</span> 
                             <span class="span-right"><span class="link-text" data-id="'.$value['id'].'" id="link_show'.$value['id'].'" data-editable>'.$value['link'].'</span> &nbsp;&nbsp; 
@@ -180,7 +179,17 @@ class menumanagement_model {
 
                 if(isset($menuItem->label))
                 {
-                    $nodetitle = $menuItem->label;
+                    if (is_object($menuItem->label)) {
+                        if (isset($menuItem->label->{current_language()})) {
+                            $nodetitle = $menuItem->label->{current_language()};
+                        } else {
+                            $nodetitle = $menuItem->label->en;
+                        }
+                        $nodeDataLabel = htmlspecialchars(json_encode($menuItem->label));
+                    } else {
+                        $nodetitle = $menuItem->label;
+                        $nodeDataLabel = $menuItem->label;
+                    }
                     $nodevisible = true;
                     $nodeurl = $menuItem->link;
                     $fontIcon = $menuItem->icon;  
@@ -194,6 +203,7 @@ class menumanagement_model {
                                         
                     $parentItem['parent'] = 1;
                     $parentItem['label'] = $nodetitle;
+                    $parentItem['data-label'] = $nodeDataLabel;
                     $parentItem['link'] = $nodeurl;
                     $parentItem['icon'] = $fontIcon;
                     $parentItem['adminonly'] = $adminonly;
@@ -213,6 +223,22 @@ class menumanagement_model {
                         {            
                             $childItem = (array) $childItem;
                             $childItem['parent'] = 0;
+
+                            if (is_object($childItem['label'])) {
+                                if (isset($childItem['label']->{current_language()})) {
+                                    $childnodetitle = $childItem['label']->{current_language()};
+                                } else {
+                                    $childnodetitle = $childItem['label']->en;
+                                }
+                                $childnodeDataLabel = htmlspecialchars(json_encode($childItem['label']));
+                            } else {
+                                $childnodetitle = $childItem['label'];
+                                $childnodeDataLabel = $childItem['label'];
+                            }
+
+                            $childItem['label'] = $childnodetitle;
+                            $childItem['data-label'] = $childnodeDataLabel;
+
                             $items[$parentCnt]['child'][] = (array)$childItem;
                             $nodecount++;
                         }

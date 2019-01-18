@@ -169,3 +169,11 @@ $string['setting_removeprivatefilesnode_desc'] = 'Enabling this setting will rem
 $string['setting_removeprivatefilesnode'] = 'Remove "Private files" node';
 $string['setting_removesecondhomenode_desc'] = 'Enabling this setting will remove the "Home" or "Dashboard" node, depending on what the user chose not to be his home page, from Boost\'s nav drawer.';
 $string['setting_removesecondhomenode'] = 'Remove second "Home" or "Dashboard" node';
+
+$string['add_menu_item'] = 'Add menu item';
+$string['add_multilingual_label'] = 'Add multilingual label';
+$string['english_label'] = 'English label';
+$string['label'] = 'Label';
+$string['language'] = 'Language';
+$string['multilingual_label'] = 'Multilingual label';
+$string['select'] = 'Select';

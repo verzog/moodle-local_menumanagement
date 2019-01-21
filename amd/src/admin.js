@@ -85,6 +85,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
             $(".selected-icon i").attr('class','fip-icon-block');
             $('#capability_selection')[0].selectize.setValue('');
             $('#adminonly').prop('checked', false);
+            admin.reset();
         }
         else
         {
@@ -154,7 +155,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
             $(".selected-icon i").attr('class','fip-icon-block');
             $('#capability_selection')[0].selectize.setValue('');
             $('#adminonly').prop('checked', false);
-
+            admin.reset();
         }
 
     });

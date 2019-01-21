@@ -44,11 +44,11 @@
                 <?php print menumanagement_model::getAllCapability(); ?>
             </div>
             <?php if (count($extraLangs) > 0) { ?>
-                <div class = "row" id = "multilingual-row">
+                <div class = "row multilingual-row" id = "multilingual-row">
                     <button type="button" id="add-multilingual-row" class="btn btn-success btn-add-multilingual-row"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
                 </div>
             <?php } ?>
-            <div class = "row">
+            <div class = "row multilingual-row">
                 <span class="form-control" style="border:none;padding-left: 0;">
                 <button type="button" id="add-item" class="btn btn-success"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>&nbsp;
                 <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;height: 33px;">

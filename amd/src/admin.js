@@ -251,7 +251,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 }
                 textInput += '>';
                 $('#multilingual-row').before(
-                    '<div class = "row multilingual-row-inputs">' +
+                    '<div class = "row multilingual-row multilingual-row-inputs">' +
                         '<label for="label">' + strs[0] + ':</label>' +
                         textInput +
                         '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "multilingual-select">' + options + '</select>' +

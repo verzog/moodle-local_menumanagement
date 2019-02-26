@@ -91,8 +91,11 @@ function local_menumanagement_extend_navigation(global_navigation $navigation) {
     $learbookPanel = $navigation->create("<span class='panel-header'>$menuLabel</span><span class='panel-short-header'></span>");
     $learbookPanel->showinflatnavigation = true;
     $learbookPanel->key = 'learnbookpanel';
-    $navigation->add_node($learbookPanel,'home');    
-    
+    $beforekey = 'users';
+    // Hack to cater for non-logged in users
+    if (in_array($beforekey, $navigation->children->get_key_list())) {
+        $navigation->add_node($learbookPanel, $beforekey);
+    }
 
     // Check if admin wanted us to remove the home node from Boost's nav drawer.
     if (isset($config->removehomenode) && $config->removehomenode == true) {

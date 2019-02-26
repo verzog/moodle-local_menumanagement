@@ -77,10 +77,9 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
     // Initialize variables for remembering the node keys for collapsing.
     $collapsenodesforjs = array();
     $collapselastparentprepared = false;
-    
-    
+
     $menuItems = (array)json_decode($customnodes);
-    
+
     if(!empty($menuItems))
     {
         // Initialize node variables.
@@ -94,7 +93,15 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
         {
             if(isset($menuItem->label))
             {
-                $nodetitle = $menuItem->label;
+                if (is_object($menuItem->label)) {
+                    if (isset($menuItem->label->{current_language()})) {
+                        $nodetitle = $menuItem->label->{current_language()};
+                    } else {
+                        $nodetitle = $menuItem->label->en;
+                    }
+                } else {
+                    $nodetitle = $menuItem->label;
+                }
                 $nodevisible = true;
                 $nodeurl = $menuItem->link;
                 $fontIcon = $menuItem->icon;  
@@ -178,8 +185,16 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                     $childItems = (array)$menuItem->child;
                     
                     foreach($childItems as $childItem)
-                    {   
-                        $nodetitle = $childItem->label;
+                    {
+                        if (is_object($childItem->label)) {
+                            if (isset($childItem->label->{current_language()})) {
+                                $nodetitle = $childItem->label->{current_language()};
+                            } else {
+                                $nodetitle = $childItem->label->en;
+                            }
+                        } else {
+                            $nodetitle = $childItem->label;
+                        }
                         $nodevisible = true;
                         $nodeurl = $childItem->link;
                         $fontIcon = $childItem->icon;  

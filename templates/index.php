@@ -1,5 +1,5 @@
-<div class="container-fluid">
 <div class="row">
+<div class="col">
     
 <div class="card" id="user-menu">
             
@@ -17,7 +17,7 @@
             </div>    
     
             <div id="collapse1" class="collapse show in" role="tabpanel" aria-labelledby="heading1" style="">    
-                <div class="card-block">
+                <div class="card-body">
 
 <!--<menu id="nestable-menu">
         <button type="button" data-action="expand-all">Expand All</button>
@@ -26,36 +26,44 @@
        
     
     <form id="add-item-form" class="form-inline" action="/action_page.php">
-        <span class="form-control">
-            <label for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
-            <input type="text" id="label" placeholder="Fill label" required class="form-control input-blank" style="padding: .5rem .75rem !important;margin-top:0 !important;">&nbsp;
-
-            <label for="link">Link:</label>
-            <input type="text" id="link" placeholder="Fill link" required class="form-control input-blank">
-
-            <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />
-
-            <div class="form-check form-check-inline">
-                <label class="form-check-label input-blank">
-                  <input type="checkbox" class="" value="" name="adminonly" id="adminonly" style="width: 20px;height: 15px;">Admin Only
-                </label>
-            </div>
-            <div class="form-control">
-                <?php print menumanagement_model::getAllCapability(); ?>
-            </div>
-            <?php if (count($extraLangs) > 0) { ?>
-                <div class = "row multilingual-row" id = "multilingual-row">
-                    <button type="button" id="add-multilingual-row" class="btn btn-success btn-add-multilingual-row"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
+                        <input class="col-9 form-control" type="text" id="label" placeholder="Fill label" required>
+                    </div>
                 </div>
-            <?php } ?>
-            <div class = "row multilingual-row">
-                <span class="form-control" style="border:none;padding-left: 0;">
-                <button type="button" id="add-item" class="btn btn-success"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>&nbsp;
-                <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;height: 33px;">
-                </span>
+                <div class="col-auto">
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label" for="link">Link:</label>
+                        <input class="col-9 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" name="adminonly" id="adminonly">
+                        <label class="form-check-label">Admin Only</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <?php print menumanagement_model::getAllCapability(); ?>
+                </div>
+                <div class="col-auto">
+                    <div class="row">
+                        <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />
+                    </div>
+                </div> 
+            </div>
+            <div class = "row multilingual-row" id = "multilingual-row">
+                <div class="col-auto">      
+                        <?php if (count($extraLangs) > 0) { ?>
+                                    <button type="button" id="add-multilingual-row" class="btn btn-success btn-add-multilingual-row"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
+                        <?php } ?>     
+                        <button type="button" id="add-item" class="btn btn-success"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>&nbsp;
+                        <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;">
+                </div>
             </div>
             <input type="hidden" id="id" value ='<?php $totalItems+1;?>'>
-        </span>
     </form>        
     
     <div class="cf nestable-lists">                        

@@ -27,40 +27,45 @@
     
     <form id="add-item-form" class="form-inline" action="/action_page.php">
             <div class="row">
-                <div class="col">
+                <div class="col-lg-5 col-md-6 col-xs-12 mt-3">
                     <div class="form-group row">
-                        <label class="col-3 col-form-label" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
-                        <input class="col-9 form-control" type="text" id="label" placeholder="Fill label" required>
+                        <label class="col-sm-5 col-xs-12 col-form-label" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
+                        <input class="col-sm-7 col-xs-10 mx-3 form-control" type="text" id="label" placeholder="Fill label" required>
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-lg-4 col-md-6 col-xs-12 mt-3">
                     <div class="form-group row">
-                        <label class="col-3 col-form-label" for="link">Link:</label>
-                        <input class="col-9 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
+                        <label class="col-sm-3 col-xs-12 col-form-label" for="link">Link:</label>
+                        <input class="col-sm-9 col-xs-10 mx-3 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-lg-3 col-md-6 col-xs-12 mt-3">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" value="" name="adminonly" id="adminonly">
                         <label class="form-check-label">Admin Only</label>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-lg-6 col-xs-12 pt-5 mt-3">
                     <?php print menumanagement_model::getAllCapability(); ?>
                 </div>
-                <div class="col-auto">
+                <div class="col-lg-6 col-xs-12 pt-5 mt-3">
                     <div class="row">
                         <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />
                     </div>
                 </div> 
             </div>
             <div class = "row multilingual-row" id = "multilingual-row">
-                <div class="col-auto">      
-                        <?php if (count($extraLangs) > 0) { ?>
-                                    <button type="button" id="add-multilingual-row" class="btn btn-success btn-add-multilingual-row"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
-                        <?php } ?>     
-                        <button type="button" id="add-item" class="btn btn-success"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>&nbsp;
-                        <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;">
+                <div class="col-lg-4 col-xs-12 mt-3">
+                    <?php if (count($extraLangs) > 0) { ?>
+                                <button type="button" id="add-multilingual-row" class="btn btn-success btn-add-multilingual-row"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
+                    <?php } ?>
+                </div>
+                <div class="col-lg-4 col-xs-12 mt-3">
+                    <button type="button" id="add-item" class="btn btn-success"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>
+                </div>
+                <div class="col-lg-4 col-xs-12 mt-3">
+                    <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;">
+                </div>
                 </div>
             </div>
             <input type="hidden" id="id" value ='<?php $totalItems+1;?>'>

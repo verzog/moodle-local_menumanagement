@@ -48,7 +48,7 @@
                 <div class="col-lg-6 col-xs-12 pt-5 mt-3">
                     <?php print menumanagement_model::getAllCapability(); ?>
                 </div>
-                <div class="col-lg-6 col-xs-12 pt-5 mt-3">
+                <div class="col-lg-6 col-xs-12 pt-5 mt-3 ml-3">
                     <div class="row">
                         <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />
                     </div>
@@ -88,10 +88,8 @@
     </div>
     </div>
     </div>
-    </div>
-    
-    
 </div>
+
 
 <div id="new-item" style="display:none;">
      <li class="dd-item dd3-item new-item-only" data-adminonly="" data-icon="" data-link="" data-label="" data-id="<?php echo $totalItems+1; ?>">

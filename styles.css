@@ -233,8 +233,6 @@
 }
 
 .multilingual-row {
-    margin-left: 0 !important;
-    margin-top: 10px;
     width: 100%;
 }
 
@@ -287,6 +285,12 @@
 @media screen and (max-width: 420px) {
     #nav-drawer.closed {
         left: -305px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #page-local-menumanagement .form-inline .form-group {
+        margin-bottom: 0;
     }
 }
 

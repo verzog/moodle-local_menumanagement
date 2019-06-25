@@ -26,30 +26,30 @@
        
     
     <form id="add-item-form" class="form-inline" action="/action_page.php">
-            <div class="row">
-                <div class="col-lg-5 col-md-6 col-xs-12 mt-3">
+            <div class="row multilingual-row">
+                <div class="col-md-5 col-xs-12 mt-3">
                     <div class="form-group row">
-                        <label class="col-sm-5 col-xs-12 col-form-label" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
-                        <input class="col-sm-7 col-xs-10 mx-3 form-control" type="text" id="label" placeholder="Fill label" required>
+                        <label class="col-12 col-form-label" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
+                        <input class="col-10 mx-3 form-control" type="text" id="label" placeholder="Fill label" required>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-xs-12 mt-3">
+                <div class="col-md-4 col-xs-12 mt-3">
                     <div class="form-group row">
-                        <label class="col-sm-3 col-xs-12 col-form-label" for="link">Link:</label>
-                        <input class="col-sm-9 col-xs-10 mx-3 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
+                        <label class="col-12 col-form-label" for="link">Link:</label>
+                        <input class="col-10 mx-3 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-xs-12 mt-3">
-                    <div class="form-check form-check-inline">
+                <div class="col-md-3 col-xs-12 mt-3">
+                    <div class="form-check form-check-inline mt-3">
                         <input class="form-check-input" type="checkbox" value="" name="adminonly" id="adminonly">
                         <label class="form-check-label">Admin Only</label>
                     </div>
                 </div>
-                <div class="col-lg-6 col-xs-12 pt-5 mt-3">
+                <div class="col-sm-6 col-xs-12 mt-3">
                     <?php print menumanagement_model::getAllCapability(); ?>
                 </div>
-                <div class="col-lg-6 col-xs-12 pt-5 mt-3">
-                    <div class="row">
+                <div class="col-sm-6 col-xs-12 mt-3">
+                    <div class="row ml-0">
                         <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />
                     </div>
                 </div> 

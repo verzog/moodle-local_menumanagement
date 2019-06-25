@@ -232,6 +232,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 { key: 'label', component: 'local_menumanagement' },
                 { key: 'multilingual_label', component: 'local_menumanagement' },
                 { key: 'select', component: 'local_menumanagement' },
+                { key: 'language', component: 'local_menumanagement' },
             ]).then(function(strs) {
                 var options = [];
                 options.push('<option value = "">' + strs[2] + '</option>');
@@ -245,16 +246,25 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                     options.push(option);
                 }
 
-                var textInput = '<input type="text" id="label-' + rowCounter + '" data-id = "' + rowCounter + '" placeholder="' + strs[1] + '" class="form-control input-blank multilingual-label"';
+                var textInput = '<input type="text" id="label-' + rowCounter + '" data-id = "' + rowCounter + '" placeholder="' + strs[1] + '" class="col-10 mx-3 form-control"';
                 if (label !== null) {
                     textInput += ' value = "' + label + '"';
                 }
                 textInput += '>';
                 $('#multilingual-row').before(
-                    '<div class = "row multilingual-row multilingual-row-inputs">' +
-                        '<label for="label">' + strs[0] + ':</label>' +
-                        textInput +
-                        '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "multilingual-select">' + options + '</select>' +
+                    '<div class = "row multilingual-row">' +
+                        '<div class = "col-md-5 col-xs-12 mt-3">' +
+                            '<div class = "form-group row">' +
+                                '<label for="label" class = "col-12 col-form-label">' + strs[0] + ':</label>' +
+                                textInput +
+                            '</div>' +
+                        '</div>' +
+                        '<div class = "col-md-4 col-xs-12 mt-3">' +
+                            '<div class = "form-group row">' +
+                                '<label for="label" class = "col-12 col-form-label">' + strs[3] + ':</label>' +
+                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
+                            '</div>' +
+                        '</div>' +
                     '</div>'
                 );
 

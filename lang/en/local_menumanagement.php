@@ -28,8 +28,8 @@ $string['pluginname'] = 'Menu Management';
 $string['menumanagementtitle'] = 'Menu Management';
 $string['menumanagementroot'] = 'Menu Management';
 
-$string['menulabel'] = 'Menu Label';
-$string['menulabel_desc'] = 'Menu label will be displayed at the top of all menu items';
+//$string['menulabel'] = 'Menu Label';
+//$string['menulabel_desc'] = 'Menu label will be displayed at the top of all menu items';
 
 
 

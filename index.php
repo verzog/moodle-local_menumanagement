@@ -30,7 +30,7 @@ $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fon
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/font-awesome.css'));
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/selectize.css'));
 
-$PAGE->set_url(new moodle_url("/local/menumanagement", array()));
+$PAGE->set_url(new moodle_url("/local/menumanagement/", array()));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Menu Management');
 $PAGE->set_heading('Menu Management');
@@ -77,7 +77,8 @@ foreach($installedlangs as $key => $lang) {
 }
 require_once ('templates/index.php');
 $PAGE->requires->js_call_amd('local_menumanagement/admin', 'init');
-
+?>
+<?php
 echo $OUTPUT->footer();
 
 ?>

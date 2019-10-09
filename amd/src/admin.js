@@ -268,11 +268,11 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                     '</div>'
                 );
 
-                if (rowCounter >= extraLangsCount) {
-                    $('#multilingual-row').hide();
-                } else {
-                    $('#multilingual-row').show();
-                }
+                // if (rowCounter >= extraLangsCount) {
+                //     $('#multilingual-row').show();
+                // } else {
+                //     $('#multilingual-row').show();
+                // }
 
                 rowCounter ++;
             })

@@ -86,20 +86,20 @@ function local_menumanagement_extend_navigation(global_navigation $navigation) {
         $navigation->showinflatnavigation = false;
     }
     
-    if(isset($menuconfig->menulabel) && $menuconfig->menulabel != '')
-        $menuLabel = $menuconfig->menulabel;
-    else
-        $menuLabel = 'Menu';
-    
-    //add lernbook panel text before any left panel links
-    $learbookPanel = $navigation->create("<span class='panel-header'>$menuLabel</span><span class='panel-short-header'></span>");
-    $learbookPanel->showinflatnavigation = true;
-    $learbookPanel->key = 'learnbookpanel';
-    $beforekey = 'users';
-    // Hack to cater for non-logged in users
-    if (in_array($beforekey, $navigation->children->get_key_list())) {
-        $navigation->add_node($learbookPanel, $beforekey);
-    }
+    //if(isset($menuconfig->menulabel) && $menuconfig->menulabel != '')
+    //    $menuLabel = $menuconfig->menulabel;
+    //else
+    //    $menuLabel = 'Menu';
+    //
+    ////add lernbook panel text before any left panel links
+    //$learbookPanel = $navigation->create("<span class='panel-header'>$menuLabel</span><span class='panel-short-header'></span>");
+    //$learbookPanel->showinflatnavigation = true;
+    //$learbookPanel->key = 'learnbookpanel';
+    //$beforekey = 'users';
+    //// Hack to cater for non-logged in users
+    //if (in_array($beforekey, $navigation->children->get_key_list())) {
+    //    $navigation->add_node($learbookPanel, $beforekey);
+    //}
 
     // Check if admin wanted us to remove the home node from Boost's nav drawer.
     if (isset($config->removehomenode) && $config->removehomenode == true) {

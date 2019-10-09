@@ -282,7 +282,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
             $("#label").val('');
             $("#link").val('');
             $("#id").val('');
-            $("#add-item").text('Add');
+            // $("#add-item").text('Add');
             $(".selected-icon i").attr('class','fip-icon-block');
             $('#capability_selection')[0].selectize.setValue('');
             $('#adminonly').prop('checked', false);

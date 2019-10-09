@@ -51,10 +51,7 @@ if(isset($_POST) && isset($_POST['menu-items-list']))
 }
 
 echo $OUTPUT->header();
-?>
 
-
-<?php
 if($message != '')
     \core\notification::add($message, $type);
 
@@ -78,7 +75,8 @@ foreach($installedlangs as $key => $lang) {
 require_once ('templates/index.php');
 $PAGE->requires->js_call_amd('local_menumanagement/admin', 'init');
 ?>
-<?php
-echo $OUTPUT->footer();
-
-?>
+<div id="page-wrapper">
+	<?php
+	echo $OUTPUT->footer();
+	?>
+</div>

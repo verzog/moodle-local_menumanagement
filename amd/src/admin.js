@@ -253,15 +253,17 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 textInput += '>';
                 $('#multilingual-row').before(
                     '<div class = "row multilingual-row">' +
-                        '<div class = "col-md-5 col-xs-12 mt-3">' +
+                        '<div class = "col-10 mt-3">' +
                             '<div class = "form-group row">' +
-                                '<label for="label" class = "col-12 col-form-label">' + strs[0] + ':</label>' +
+                                // '<label for="label" class = "col-12 col-form-label">' + strs[0] + ':</label>' +
                                 textInput +
                             '</div>' +
                         '</div>' +
-                        '<div class = "col-md-4 col-xs-12 mt-3">' +
+                    '</div>' +
+                '<div class = "row multilingual-row">' +
+                        '<div class = "col-10 mt-3">' +
                             '<div class = "form-group row">' +
-                                '<label for="label" class = "col-12 col-form-label">' + strs[3] + ':</label>' +
+                                // '<label for="label" class = "col-12 col-form-label">' + strs[3] + ':</label>' +
                                 '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
                             '</div>' +
                         '</div>' +

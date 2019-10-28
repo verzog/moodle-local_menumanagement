@@ -294,5 +294,13 @@
     }
 }
 
+#region-main {
+    overflow-x: auto;
+    overflow-y: visible;
+    border: hidden;
+    padding: unset;
+    background-color: #fff;
+}
+
 
 /*********************above css is from previous local_boostnavigation plugin which is merge into this plugin*************************/

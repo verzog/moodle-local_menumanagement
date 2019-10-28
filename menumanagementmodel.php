@@ -260,7 +260,7 @@ class menumanagement_model {
         global $DB;
         $capabilities = $DB->get_records_sql("SELECT * FROM mdl_capabilities");
         $selection = "<select name='capability' id='capability_selection' class=''>";
-        $selection .= "<option value=''>Select Role Capability</option>";
+        $selection .= "<option value=''>Role Capability</option>";
         foreach($capabilities as $capability){
             $capdes = $capability->component.":".get_capability_string($capability->name);
             $selection .= "<option value='{$capability->name}'>{$capdes}</option>";

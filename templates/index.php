@@ -42,19 +42,14 @@
                     </div>
                 </div>
                 </div>
-<!--            <div class="row multilingual-row">-->
-<!--                <div class="col-9 mt-3">-->
-<!--                    <div class="get-capability" >-->
-<!--                    --><?php //print menumanagement_model::getAllCapability(); ?>
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
             <div class="row multilingual-row">
-<!--                <div class="col-9 mt-3 ml-2">-->
-                    <div class="col-3 mt-3" >
-                        <?php print menumanagement_model::getAllCapability(); ?>
+                <div class="col-4 mt-3">
+                    <div class="get-capability" >
+                    <?php print menumanagement_model::getAllCapability(); ?>
                     </div>
-<!--                </div>-->
+                </div>
+            </div>
+            <div class="row multilingual-row">
                 <div class="admin-only ml-3">
                     <div class="form-check form-check-inline mt-3">
                         <input class="form-check-input" type="checkbox" value="" name="adminonly" id="adminonly">

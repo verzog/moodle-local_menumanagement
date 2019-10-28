@@ -70,6 +70,8 @@
                 <div class="col-lg-2 col-xs-12 mt-3" id="multilingual-button">
                     <?php if (count($extraLangs) > 0) { ?>
                                 <button type="button" id="add-multilingual-row" class="btn btn-add-multilingual-row btn-primary mt-1"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
+                    <?php } else { ?>
+                        <button type="button" id="add-multilingual-row" class="btn btn-add-multilingual-row btn-primary mt-1" disabled><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
                     <?php } ?>
 <!--                    <button type="button" id="add-item" class="btn btn-primary">--><?php //echo get_string('add_menu_item', 'local_menumanagement'); ?><!--</button>-->
 <!--                    <input class="btn reset btn-primary mt-1" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;">-->

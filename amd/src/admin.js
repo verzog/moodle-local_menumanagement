@@ -25,6 +25,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
 
     var rowCounter = 0;
     var extraLangsCount = 0;
+    var multilingualCounter = 0;
 
     $("#add-item").click(function(){
         var label = $("#label").val(),
@@ -275,8 +276,9 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 // } else {
                 //     $('#multilingual-row').show();
                 // }
-                var elementExists = document.getElementById("multilingual-text");
-                if (elementExists) {
+                multilingualCounter ++;
+                // var elementExists = document.getElementById("multilingual-text");
+                if (multilingualCounter>=extraLangsCount) {
                     // document.getElementById('multilingual-button').style.display = "none";
                     document.getElementById('add-multilingual-row').disabled = true;
                 }

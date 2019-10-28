@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 </div>
-            <div class="row multilingual-row">
+            <div class="row multilingual-row" id="get-capability">
                 <div class="col-4 mt-3">
                     <div class="get-capability" >
                     <?php print menumanagement_model::getAllCapability(); ?>
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class = "row multilingual-row add-buttons" id = "multilingual-row">
-                <div class="col-lg-2 col-xs-12 mt-3">
+                <div class="col-lg-2 col-xs-12 mt-3" id="multilingual-button">
                     <?php if (count($extraLangs) > 0) { ?>
                                 <button type="button" id="add-multilingual-row" class="btn btn-add-multilingual-row btn-primary mt-1"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
                     <?php } ?>

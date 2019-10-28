@@ -251,10 +251,10 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                     textInput += ' value = "' + label + '"';
                 }
                 textInput += '>';
-                $('#multilingual-row').before(
+                $('#get-capability').before(
                     '<div class = "row multilingual-row">' +
                         '<div class = "col-6 mt-3">' +
-                            '<div class = "form-group row">' +
+                            '<div class = "form-group row" id ="multilingual-text">' +
                                 // '<label for="label" class = "col-12 col-form-label">' + strs[0] + ':</label>' +
                                 textInput +
                             '</div>' +
@@ -275,6 +275,11 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 // } else {
                 //     $('#multilingual-row').show();
                 // }
+                var elementExists = document.getElementById("multilingual-text");
+                if (elementExists) {
+                    // document.getElementById('multilingual-button').style.display = "none";
+                    document.getElementById('add-multilingual-row').disabled = true;
+                }
 
                 rowCounter ++;
             })

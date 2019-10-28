@@ -176,4 +176,4 @@ $string['english_label'] = 'English label';
 $string['label'] = 'Label';
 $string['language'] = 'Language';
 $string['multilingual_label'] = 'Multilingual label';
-$string['select'] = 'Select';
+$string['select'] = 'Select language';

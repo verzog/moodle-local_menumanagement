@@ -260,26 +260,27 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                         '</div>' +
                     '</div>' +
                     '<div class = "row multilingual-row multilingual-row-inputs">' +
-                        '<div class = "col-6">' +
+                        '<div class = "col-6 mt-1">' +
+                            '<div class = "form-group row">' +
+                    // '<label for="label" class = "col-10 mx-3">' + strs[3] + ':</label>' +
+                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
+                             '</div>' +
+                         '</div>' +
+                    '</div>'+
+                    '<div class = "row multilingual-row multilingual-row-inputs">' +
+                        '<div class = "col-6 mt-2">' +
                             '<div class = "form-group row" id ="multilingual-text">' +
                                 // '<label for="label" class = "col-10 mx-3">' + strs[0] + ':</label>' +
                                 textInput +
                             '</div>' +
                         '</div>' +
-                    '</div>' +
+                    '</div>'
                     // '<div class = "row multilingual-row multilingual-row-inputs">' +
                     //     '<div class = "form-check-label mt-3">' +
                     // '<label for="label">' + strs[3] + ':</label>' +
                     //     '</div>' +
                     // '</div>' +
-                '<div class = "row multilingual-row multilingual-row-inputs">' +
-                        '<div class = "col-6 mt-3">' +
-                            '<div class = "form-group row">' +
-                                // '<label for="label" class = "col-10 mx-3">' + strs[3] + ':</label>' +
-                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>'
+
                 );
 
                 // if (rowCounter >= extraLangsCount) {

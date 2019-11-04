@@ -217,3 +217,6 @@ p { line-height: 1.5em; }
 .selectize-input > input{
     width: 90% !important;
 }
+.form-check-label {
+    margin-left: 1rem;
+}

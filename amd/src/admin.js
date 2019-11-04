@@ -253,18 +253,18 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 }
                 textInput += '>';
                 $('#get-capability').before(
-                    '<div class = "row multilingual-row">' +
+                    '<div class = "row multilingual-row multilingual-row-inputs">' +
                         '<div class = "col-6 mt-3">' +
                             '<div class = "form-group row" id ="multilingual-text">' +
-                                // '<label for="label" class = "col-12 col-form-label">' + strs[0] + ':</label>' +
+                                '<label for="label" class = "col-10 mx-3 form-control">' + strs[0] + ':</label>' +
                                 textInput +
                             '</div>' +
                         '</div>' +
                     '</div>' +
-                '<div class = "row multilingual-row">' +
+                '<div class = "row multilingual-row multilingual-row-inputs">' +
                         '<div class = "col-6 mt-3">' +
                             '<div class = "form-group row">' +
-                                // '<label for="label" class = "col-12 col-form-label">' + strs[3] + ':</label>' +
+                                '<label for="label" class = "col-10 mx-3 form-control">' + strs[3] + ':</label>' +
                                 '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
                             '</div>' +
                         '</div>' +
@@ -279,7 +279,6 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 multilingualCounter ++;
                 // var elementExists = document.getElementById("multilingual-text");
                 if (multilingualCounter>=extraLangsCount) {
-                    // document.getElementById('multilingual-button').style.display = "none";
                     document.getElementById('add-multilingual-row').disabled = true;
                 }
 
@@ -299,6 +298,8 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
             rowCounter = 1;
             if (extraLangsCount > 0) {
                 $('#multilingual-row').show();
+                document.getElementById('add-multilingual-row').disabled = false;
+                multilingualCounter = 0;
             }
         }
     };

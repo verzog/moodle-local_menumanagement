@@ -29,7 +29,7 @@
             <div class="row multilingual-row">
                 <div class="col-6 mt-3">
                     <div class="form-group row eng-level">
-<!--                        <label class="col-12 col-form-label" for="label">--><?php //echo get_string('english_label', 'local_menumanagement'); ?><!--:</label>-->
+                        <label class="col-10 mx-3 form-control" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
                         <input class="col-10 mx-3 form-control" type="text" id="label" placeholder="Fill English label" required>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="row multilingual-row">
                 <div class="col-6 mt-3">
                     <div class="form-group row fill-link">
-<!--                        <label class="col-12 col-form-label" for="link">Link:</label>-->
+                        <label class="col-10 mx-3 form-control" for="link">Link:</label>
                         <input class="col-10 mx-3 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
                     </div>
                 </div>

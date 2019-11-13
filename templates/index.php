@@ -140,5 +140,7 @@
             echo $key . ': "' . $value . '",';
         }
         echo '}';
+    } else {
+        echo 'var langs = {}';
     } ?>
 </script>

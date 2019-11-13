@@ -247,7 +247,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                     options.push(option);
                 }
 
-                var textInput = '<input type="text" id="label-' + rowCounter + '" data-id = "' + rowCounter + '" placeholder="' + strs[1] + '" class="col-10 mx-3 form-control"';
+                var textInput = '<input type="text" id="label-' + rowCounter + '" data-id = "' + rowCounter + '" placeholder="' + strs[1] + '" class="col-10 mx-3 form-control input-blank multilingual-label"';
                 if (label !== null) {
                     textInput += ' value = "' + label + '"';
                 }
@@ -263,7 +263,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                         '<div class = "col-6 mt-1">' +
                             '<div class = "form-group row">' +
                     // '<label for="label" class = "col-10 mx-3">' + strs[3] + ':</label>' +
-                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
+                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "multilingual-select col-10 mx-3 form-control">' + options + '</select>' +
                              '</div>' +
                          '</div>' +
                     '</div>'+
@@ -291,11 +291,11 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                 // multilingualCounter ++;
                 // var elementExists = document.getElementById("multilingual-text");
                 if (multilingualCounter>=extraLangsCount) {
-                    document.getElementById('add-multilingual-row').disabled = true;
+                    $('#add-multilingual-row').attr('disabled', true);
                 }
 
                 rowCounter ++;
-            })
+            });
         },
 
         reset: function() {
@@ -310,7 +310,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
             rowCounter = 1;
             if (extraLangsCount > 0) {
                 $('#multilingual-row').show();
-                document.getElementById('add-multilingual-row').disabled = false;
+                $('#add-multilingual-row').attr('disabled', false);
                 multilingualCounter = 0;
             }
         }

@@ -30,7 +30,7 @@ $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/jquery.fon
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/font-awesome.css'));
 $PAGE->requires->css(new moodle_url('/local/menumanagement/assets/css/selectize.css'));
 
-$PAGE->set_url(new moodle_url("/local/menumanagement", array()));
+$PAGE->set_url(new moodle_url("/local/menumanagement/", array()));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Menu Management');
 $PAGE->set_heading('Menu Management');
@@ -51,10 +51,7 @@ if(isset($_POST) && isset($_POST['menu-items-list']))
 }
 
 echo $OUTPUT->header();
-?>
 
-
-<?php
 if($message != '')
     \core\notification::add($message, $type);
 
@@ -77,7 +74,9 @@ foreach($installedlangs as $key => $lang) {
 }
 require_once ('templates/index.php');
 $PAGE->requires->js_call_amd('local_menumanagement/admin', 'init');
-
-echo $OUTPUT->footer();
-
 ?>
+<div id="page-wrapper">
+	<?php
+	echo $OUTPUT->footer();
+	?>
+</div>

@@ -25,6 +25,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
 
     var rowCounter = 0;
     var extraLangsCount = 0;
+    var multilingualCounter = 0;
 
     $("#add-item").click(function(){
         var label = $("#label").val(),
@@ -246,43 +247,62 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
                     options.push(option);
                 }
 
-                var textInput = '<input type="text" id="label-' + rowCounter + '" data-id = "' + rowCounter + '" placeholder="' + strs[1] + '" class="col-10 mx-3 form-control"';
+                var textInput = '<input type="text" id="label-' + rowCounter + '" data-id = "' + rowCounter + '" placeholder="' + strs[1] + '" class="col-10 mx-3 form-control input-blank multilingual-label"';
                 if (label !== null) {
                     textInput += ' value = "' + label + '"';
                 }
                 textInput += '>';
-                $('#multilingual-row').before(
-                    '<div class = "row multilingual-row">' +
-                        '<div class = "col-md-5 col-xs-12 mt-3">' +
+                multilingualCounter ++;
+                $('#get-capability').before(
+                    '<div class = "row multilingual-row multilingual-row-inputs">' +
+                        '<div class = "form-check-label mt-3">' +
+                            '<label for="label">' + strs[0] + ': ('+multilingualCounter+')</label>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class = "row multilingual-row multilingual-row-inputs">' +
+                        '<div class = "col-6 mt-1">' +
                             '<div class = "form-group row">' +
-                                '<label for="label" class = "col-12 col-form-label">' + strs[0] + ':</label>' +
+                    // '<label for="label" class = "col-10 mx-3">' + strs[3] + ':</label>' +
+                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "multilingual-select col-10 mx-3 form-control">' + options + '</select>' +
+                             '</div>' +
+                         '</div>' +
+                    '</div>'+
+                    '<div class = "row multilingual-row multilingual-row-inputs">' +
+                        '<div class = "col-6 mt-2">' +
+                            '<div class = "form-group row" id ="multilingual-text">' +
+                                // '<label for="label" class = "col-10 mx-3">' + strs[0] + ':</label>' +
                                 textInput +
                             '</div>' +
                         '</div>' +
-                        '<div class = "col-md-4 col-xs-12 mt-3">' +
-                            '<div class = "form-group row">' +
-                                '<label for="label" class = "col-12 col-form-label">' + strs[3] + ':</label>' +
-                                '<select name = "language-' + rowCounter + '" data-id = "' + rowCounter + '" id = "language-' + rowCounter + '" class = "col-10 mx-3 form-control">' + options + '</select>' +
-                            '</div>' +
-                        '</div>' +
                     '</div>'
+                    // '<div class = "row multilingual-row multilingual-row-inputs">' +
+                    //     '<div class = "form-check-label mt-3">' +
+                    // '<label for="label">' + strs[3] + ':</label>' +
+                    //     '</div>' +
+                    // '</div>' +
+
                 );
 
-                if (rowCounter >= extraLangsCount) {
-                    $('#multilingual-row').hide();
-                } else {
-                    $('#multilingual-row').show();
+                // if (rowCounter >= extraLangsCount) {
+                //     $('#multilingual-row').show();
+                // } else {
+                //     $('#multilingual-row').show();
+                // }
+                // multilingualCounter ++;
+                // var elementExists = document.getElementById("multilingual-text");
+                if (multilingualCounter>=extraLangsCount) {
+                    $('#add-multilingual-row').attr('disabled', true);
                 }
 
                 rowCounter ++;
-            })
+            });
         },
 
         reset: function() {
             $("#label").val('');
             $("#link").val('');
             $("#id").val('');
-            $("#add-item").text('Add');
+            // $("#add-item").text('Add');
             $(".selected-icon i").attr('class','fip-icon-block');
             $('#capability_selection')[0].selectize.setValue('');
             $('#adminonly').prop('checked', false);
@@ -290,6 +310,8 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/str'], function($, Aja
             rowCounter = 1;
             if (extraLangsCount > 0) {
                 $('#multilingual-row').show();
+                $('#add-multilingual-row').attr('disabled', false);
+                multilingualCounter = 0;
             }
         }
     };

@@ -26,45 +26,74 @@
        
     
     <form id="add-item-form" class="form-inline" action="/action_page.php">
+        <div class="row multilingual-row">
+            <div class="form-check-label">
+<!--                <div class="form-group row eng-level">-->
+                    <label for="label" id="english-label" style=""><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
+<!--                    <input class="col-10 mx-3 form-control" type="text" id="label" placeholder="Fill English label" required>-->
+<!--                </div>-->
+            </div>
+        </div>
             <div class="row multilingual-row">
-                <div class="col-md-5 col-xs-12 mt-3">
-                    <div class="form-group row">
-                        <label class="col-12 col-form-label" for="label"><?php echo get_string('english_label', 'local_menumanagement'); ?>:</label>
-                        <input class="col-10 mx-3 form-control" type="text" id="label" placeholder="Fill label" required>
+                <div class="col-6">
+                    <div class="form-group row eng-level">
+<!--                        <label class="form-check-label" for="label" id="english-label" style="">--><?php //echo get_string('english_label', 'local_menumanagement'); ?><!--:</label>-->
+                        <input class="col-10 mx-3 form-control" type="text" id="label" placeholder="Fill English label" required>
                     </div>
                 </div>
-                <div class="col-md-4 col-xs-12 mt-3">
-                    <div class="form-group row">
-                        <label class="col-12 col-form-label" for="link">Link:</label>
+            </div>
+        <div class="row multilingual-row">
+            <div class="form-check-label mt-3">
+                <label for="link">Link:</label>
+            </div>
+        </div>
+                <div class="row multilingual-row">
+                <div class="col-6">
+                    <div class="form-group row fill-link">
+<!--                        <label class="col-10 mx-3" for="link">Link:</label>-->
                         <input class="col-10 mx-3 form-control" type="text" id="link" placeholder="Fill link" required class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-12 mt-3">
+                </div>
+            <div class="row multilingual-row" id="get-capability">
+                <div class="col-4 mt-3">
+                    <div class="get-capability" >
+                    <?php print menumanagement_model::getAllCapability(); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row multilingual-row">
+                <div class="admin-only ml-3">
                     <div class="form-check form-check-inline mt-3">
                         <input class="form-check-input" type="checkbox" value="" name="adminonly" id="adminonly">
                         <label class="form-check-label">Admin Only</label>
                     </div>
+<!--                    <div class="icon-selector" style="padding-top: 5px">-->
+<!--                    <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />-->
+<!--                    </div>-->
                 </div>
-                <div class="col-sm-6 col-xs-12 mt-3">
-                    <?php print menumanagement_model::getAllCapability(); ?>
-                </div>
-                <div class="col-sm-6 col-xs-12 mt-3">
+
+                <div class="col-3 mt-3">
                     <div class="row ml-0">
                         <input type="text" id="font-awesome-icon-list" name="font-awesome-icon-list" class="form-control" />
                     </div>
-                </div> 
+                </div>
             </div>
-            <div class = "row multilingual-row" id = "multilingual-row">
-                <div class="col-lg-4 col-xs-12 mt-3">
+            <div class = "row multilingual-row add-buttons" id = "multilingual-row">
+                <div class="col-xs-12 mt-3" id="multilingual-button">
                     <?php if (count($extraLangs) > 0) { ?>
-                                <button type="button" id="add-multilingual-row" class="btn btn-success btn-add-multilingual-row"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
+                        <button type="button" id="add-multilingual-row" class="btn btn-add-multilingual-row btn-primary mt-1 mr-5"><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
+                    <?php } else { ?>
+                        <button type="button" id="add-multilingual-row" class="btn btn-add-multilingual-row btn-primary mt-1 mr-5" disabled><?php echo get_string('add_multilingual_label', 'local_menumanagement'); ?></button>
                     <?php } ?>
-                </div>
-                <div class="col-lg-4 col-xs-12 mt-3">
-                    <button type="button" id="add-item" class="btn btn-success"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>
-                </div>
-                <div class="col-lg-4 col-xs-12 mt-3">
-                    <input class="btn reset" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;">
+<!--                    <button type="button" id="add-item" class="btn btn-primary">--><?php //echo get_string('add_menu_item', 'local_menumanagement'); ?><!--</button>-->
+<!--                    <input class="btn reset btn-primary mt-1" type="button" value="Reset" style="background-color: cornflowerblue;border: none;color:white;">-->
+<!--                </div>-->
+<!--                <div class="col-lg-2 col-xs-12 mt-3">-->
+                    <button type="button" id="add-item" class="btn btn-primary mt-1 mr-5"><?php echo get_string('add_menu_item', 'local_menumanagement'); ?></button>
+<!--                </div>-->
+<!--                <div class="col-lg-2 col-xs-12 mt-3">-->
+                    <input class="btn reset btn-primary mt-1 mr-5" type="button" value="Reset">
                 </div>
                 </div>
             </div>
@@ -82,7 +111,7 @@
         <!--<textarea name="menu-items-list" id="nestable-output"> </textarea>-->   
     </form>
 
-    <button type="button" id="save-menu" class="btn btn-success">Submit</button>
+    <button type="button" id="save-menu" class="btn btn-primary">Submit</button>
     <!--<input type="button" value="Save" id="save-menu">-->
         
     </div>
@@ -111,5 +140,7 @@
             echo $key . ': "' . $value . '",';
         }
         echo '}';
+    } else {
+        echo 'var langs = {}';
     } ?>
 </script>

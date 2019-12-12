@@ -28,8 +28,8 @@ $string['pluginname'] = 'Menu Management';
 $string['menumanagementtitle'] = 'Menu Management';
 $string['menumanagementroot'] = 'Menu Management';
 
-$string['menulabel'] = 'Menu Label';
-$string['menulabel_desc'] = 'Menu label will be displayed at the top of all menu items';
+//$string['menulabel'] = 'Menu Label';
+//$string['menulabel_desc'] = 'Menu label will be displayed at the top of all menu items';
 
 
 
@@ -173,7 +173,7 @@ $string['setting_removesecondhomenode'] = 'Remove second "Home" or "Dashboard" n
 $string['add_menu_item'] = 'Add menu item';
 $string['add_multilingual_label'] = 'Add multilingual label';
 $string['english_label'] = 'English label';
-$string['label'] = 'Label';
+$string['label'] = ' Multilingual Label';
 $string['language'] = 'Language';
 $string['multilingual_label'] = 'Multilingual label';
-$string['select'] = 'Select';
+$string['select'] = 'Select language';

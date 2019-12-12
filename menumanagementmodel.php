@@ -260,13 +260,40 @@ class menumanagement_model {
         global $DB;
         $capabilities = $DB->get_records_sql("SELECT * FROM mdl_capabilities");
         $selection = "<select name='capability' id='capability_selection' class=''>";
-        $selection .= "<option value=''>Select Role Capability</option>";
+        $selection .= "<option value=''>Role Capability</option>";
         foreach($capabilities as $capability){
-            $capdes = $capability->component.":".get_capability_string($capability->name);
-            $selection .= "<option value='{$capability->name}'>{$capdes}</option>";
+            if (self::checkCapabilityString($capability->name)) {
+                $capdes = $capability->component.":".get_capability_string($capability->name);
+                $selection .= "<option value='{$capability->name}'>{$capdes}</option>";
+            }
         }
         $selection .="</select>";
         return $selection;
+    }
+
+    public static function checkCapabilityString($capabilityname) {
+        // Hack to get rid of irritating menu management index page errors.
+        list($type, $name, $capname) = preg_split('|[/:]|', $capabilityname);
+
+        if ($type === 'moodle') {
+            $component = 'core_role';
+        } else if ($type === 'quizreport') {
+            $component = 'quiz_'.$name;
+        } else {
+            $component = $type.'_'.$name;
+        }
+
+        $stringname = $name.':'.$capname;
+
+        if ($component === 'core_role' or get_string_manager()->string_exists($stringname, $component)) {
+            return true;
+        }
+
+        $dir = core_component::get_component_directory($component);
+        if (!file_exists($dir)) {
+            return false;
+        }
+        return false;
     }
 }
 	

@@ -10,16 +10,26 @@
 /* Show all second-level nav drawer items which have the attribute not hidden. */
 .list-group-item[data-key="mycourses"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="mycourses"][data-hidden="0"],
 .list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementcoursesections"][data-hidden="0"],
-.list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementactivities"][data-hidden="0"],
-.list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"] ~ .list-group-item[data-parent-key^="localmenumanagementcustom"][data-hidden="0"] {
+.list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementactivities"][data-hidden="0"] {
     display: block;
 }
 /* Hide all second-level nav drawer items which have the attribute hidden. */
 .list-group-item[data-key="mycourses"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="mycourses"][data-hidden="1"],
 .list-group-item[data-key="localmenumanagementcoursesections"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementcoursesections"][data-hidden="1"],
-.list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementactivities"][data-hidden="1"],
-.list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="1"] ~ .list-group-item[data-parent-key^="localmenumanagementcustom"][data-hidden="1"] {
+.list-group-item[data-key="localmenumanagementactivities"][data-isexpandable="1"] ~ .list-group-item[data-parent-key="localmenumanagementactivities"][data-hidden="1"] {
     display: none;
+}
+
+#nav-drawer .list-group .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="0"][data-hidden="0"] {
+    display: block;
+}
+#nav-drawer .list-group .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="0"][data-hidden="1"] {
+    display: none;
+}
+
+#nav-drawer.closed .list-group-item[data-key^="localmenumanagementcustom"][data-isexpandable="0"][data-collapse="0"]:not([data-parent-key="myhome"]){
+    content:'';
+    display:none !important;
 }
 /* Add the icon for the expanded node state. */
 .jsenabled .list-group-item[data-key="mycourses"][data-isexpandable="1"][data-collapse="0"] > div::after,

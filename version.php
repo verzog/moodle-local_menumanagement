@@ -20,4 +20,4 @@ $plugin->requires = 2017111300;
 $plugin->release = '1.0';
 $plugin->maturity = MATURITY_STABLE;
 $plugin->component = 'local_menumanagement';
-$plugin->dependencies = array('theme_boost' => 2017111300);
+$plugin->dependencies = array('theme_learnbook' => 2021022600);

@@ -15,18 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This plugin provides access to Moodle data in form of analytics and reports in real time.
-*
-*
-* @package    local_intelliboard
-* @copyright  2017 IntelliBoard, Inc
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-* @website    http://intelliboard.net/
-*/
+ * Local menu management navigation extension
+ *
+ * @package    local_menumanagement
+ * @copyright  2019 eCreators PTY LTD
+ */
 
-$string['pluginname'] = 'Menu Management';
-$string['menumanagementtitle'] = 'Menu Management';
-$string['menumanagementroot'] = 'Menu Management';
+$string['pluginname'] = 'Learnbook Menu';
+$string['menumanagementtitle'] = 'Learnbook Menu';
+$string['menumanagementroot'] = 'Learnbook Menu';
+$string['customise_menumanagement'] = 'Customise Learnbook Menu';
+$string['node_menumanagement'] = 'Customise Learnbook Menu node';
 
 //$string['menulabel'] = 'Menu Label';
 //$string['menulabel_desc'] = 'Menu label will be displayed at the top of all menu items';

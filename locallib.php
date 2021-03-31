@@ -14,6 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Local menu management navigation extension
+ *
+ * @package    local_menumanagement
+ * @copyright  2019 eCreators PTY LTD
+ */
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -88,7 +94,7 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
         $nodevisible = false;
         $nodeischild = false;
         $nodekey = null;
-        
+
         foreach($menuItems as $menuItem)
         {
             if(isset($menuItem->label))
@@ -104,31 +110,31 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                 }
                 $nodevisible = true;
                 $nodeurl = $menuItem->link;
-                $fontIcon = $menuItem->icon;  
+                $fontIcon = $menuItem->icon;
                 $adminonly = $menuItem->adminonly;
                 $capability = $menuItem->capability;
 
                 if($adminonly && !is_siteadmin()){
-                    $nodevisible = false; 
+                    $nodevisible = false;
                 }
-                            
-                
+
+
                 if(!empty($capability) && !has_capability($capability, $context)){
                     $nodevisible = false;
                 }
             }
-            
+
             if($nodevisible)
             {
                 // Generate node key.
                 $nodekey = $keyprefix.++$nodecount;
                 $pixicon = null;
-                               
+
                 if($fontIcon != NULL)
-                    $nodetitle = "<div class='row'><span class='".$fontIcon." fa-2x col-sm-1' aria-hidden='true' style='font-size:18px;'></span><span title='$nodetitle' class='menu-title col-sm-10'>$nodetitle</span></div>"; 
+                    $nodetitle = "<div class='row'><span class='".$fontIcon." fa-2x col-sm-1' aria-hidden='true' style='font-size:18px;'></span><span title='$nodetitle' class='menu-title col-sm-10'>$nodetitle</span></div>";
                 else
                     $nodetitle = "<span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>";
-               
+
                 // Create custom node.
                 $customnode = navigation_node::create($nodetitle,
                         $nodeurl,
@@ -141,8 +147,8 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                 if ($showinflatnavigation) {
                     $customnode->showinflatnavigation = true;
                 }
-                
-                
+
+
                  // If it's a parent node.
                 if (!$nodeischild) {
                     // If the nodes should be collapsed and collapsing hasn't been prepared yet, prepare collapsing of the parent node.
@@ -178,12 +184,12 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                     }
 
                     // Otherwise, if it's a child node.
-                } 
-                
+                }
+
                 if(isset($menuItem->child))
                 {
                     $childItems = (array)$menuItem->child;
-                    
+
                     foreach($childItems as $childItem)
                     {
                         if (is_object($childItem->label)) {
@@ -197,18 +203,18 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                         }
                         $nodevisible = true;
                         $nodeurl = $childItem->link;
-                        $fontIcon = $childItem->icon;  
+                        $fontIcon = $childItem->icon;
                         $adminonly = $childItem->adminonly;
                         $capability = $childItem->capability;
-                        
+
                         if($fontIcon != NULL)
-                            $nodetitle = "<div class='row'><span class='".$fontIcon." fa-2x col-sm-1' aria-hidden='true' style='font-size:18px;'></span><span title='$nodetitle' class='menu-title col-sm-10'>$nodetitle</span></div>"; 
-                        else                        
+                            $nodetitle = "<div class='row'><span class='".$fontIcon." fa-2x col-sm-1' aria-hidden='true' style='font-size:18px;'></span><span title='$nodetitle' class='menu-title col-sm-10'>$nodetitle</span></div>";
+                        else
                             $nodetitle = "<span title='$nodetitle' class='menu-title'>&nbsp;&nbsp;&nbsp;&nbsp;$nodetitle</span>";
-                        
+
                         // Generate node key.
                         $nodekey = $keyprefix.++$nodecount;
-                        
+
                         // Create custom node.
                         $customnode = navigation_node::create($nodetitle,
                                 $nodeurl,
@@ -256,15 +262,15 @@ function local_menumanagement_build_custom_nodes_all($customnodes, navigation_no
                         $customnode->icon = new pix_icon('customnode', '', 'local_menumanagement');
                     }
                 }
-                
-                
-                
-            } 
+
+
+
+            }
         }
     }
-    
+
     // Return the node keys for collapsing.
-    return $collapsenodesforjs;    
+    return $collapsenodesforjs;
 }
 
 
@@ -393,17 +399,17 @@ function local_menumanagement_build_custom_nodes($customnodes, navigation_node $
 
             // Generate node key.
             $nodekey = $keyprefix.++$nodecount;
-            
+
             $pixicon = NULL;
             //$pixicon = new pix_icon('home', '', 'local_menumanagement');
-            
+
             preg_match_all('/{(.*?)}/', $nodetitle, $matches);
             $fontIcon = $matches[1][0];
-            
+
             $nodetitle = preg_replace( "/{([^:}]*):?([^}]*)}/", "", $nodetitle );
-                                          
+
             if($fontIcon != NULL)
-                $nodetitle = "<i class='fa ".$fontIcon." fa-2' aria-hidden='true' style='font-size:18px;'></i><span class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>"; 
+                $nodetitle = "<i class='fa ".$fontIcon." fa-2' aria-hidden='true' style='font-size:18px;'></i><span class='menu-title'>&nbsp;&nbsp;&nbsp;$nodetitle</span>";
             else
             {
                 if($nodeischild)

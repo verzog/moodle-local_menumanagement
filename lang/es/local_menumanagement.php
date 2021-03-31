@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Local Menu Management
+ * Local menu management navigation extension
  *
  * @package    local_menumanagement
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2019 eCreators PTY LTD
  */
 
 defined('MOODLE_INTERNAL') || die();

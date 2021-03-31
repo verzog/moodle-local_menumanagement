@@ -1,16 +1,38 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Local menu management navigation extension
+ *
+ * @package    local_menumanagement
+ * @copyright  2019 eCreators PTY LTD
+ */
+
 // ini_set('memory_limit','1024M');
 defined('MOODLE_INTERNAL') ||die();
 class menumanagement_model {
-    
+
 //	public static function get
-    
+
     public static function createMenuItems($menuItems)
     {
         // Make a new array on delimiter "new line".
         $lines = explode("\n", $menuItems);
         $cnt = 0;
-        $parentCnt = 0;        
+        $parentCnt = 0;
         $items = [];
 
         // Parse node settings.
@@ -71,7 +93,7 @@ class menumanagement_model {
                                     $nodevisible = false;
                                 }
 
-                                break;                   
+                                break;
                         }
 
                         // Support for inheritance of the parent node's visibility to his child notes.
@@ -91,15 +113,15 @@ class menumanagement_model {
             if ($nodevisible) {
                 $cnt++;
                 // Generate node key.
-                $nodekey = $keyprefix.++$nodecount;        
+                $nodekey = $keyprefix.++$nodecount;
                 preg_match_all('/{(.*?)}/', $nodetitle, $matches);
                 $fontIcon = $matches[1][0];
                 $nodetitle = preg_replace( "/{([^:}]*):?([^}]*)}/", "", $nodetitle );
 
                 // If it's a parent node.
-                if (!$nodeischild)           
+                if (!$nodeischild)
                     $parent = 1;
-                else          
+                else
                     $parent = 0;
 
                 $thisRef['parent'] = $parent;
@@ -112,16 +134,16 @@ class menumanagement_model {
                     $items[$parentCnt]['child'][] = $thisRef;
                } else {
                     $parentCnt++;
-                    $items[$parentCnt] = $thisRef;            
-               }       
+                    $items[$parentCnt] = $thisRef;
+               }
 
             }
         }
         $items['totalItems'] = $cnt;
         return $items;
     }
-    
-    public static function getMenu($items,$class = 'dd-list') 
+
+    public static function getMenu($items,$class = 'dd-list')
     {
         $id = "menu-id";
         if($class == 'child')
@@ -151,21 +173,21 @@ class menumanagement_model {
         return $html;
 
     }
-    
-    
+
+
     public static function createMenuItemsNew($menuItems)
-    {                
-        $menuItems = (array)json_decode($menuItems);                
-        
+    {
+        $menuItems = (array)json_decode($menuItems);
+
         // Initialize counter which is later used for the node IDs.
         $nodecount = 0;
         $keyprefix = "localmenumanagementcustomrootusers";
         $items = array();
         $parentCnt = 0;
-        
+
         if(!empty($menuItems))
-        {            
-            
+        {
+
             foreach($menuItems as $menuItem)
             {
                 // Initialize node variables.
@@ -192,15 +214,15 @@ class menumanagement_model {
                     }
                     $nodevisible = true;
                     $nodeurl = $menuItem->link;
-                    $fontIcon = $menuItem->icon;  
+                    $fontIcon = $menuItem->icon;
                     $adminonly = $menuItem->adminonly;
                     $capability = $menuItem->capability;
                 }
-                                
-                
+
+
                 if($nodevisible)
-                {                    
-                                        
+                {
+
                     $parentItem['parent'] = 1;
                     $parentItem['label'] = $nodetitle;
                     $parentItem['data-label'] = $nodeDataLabel;
@@ -209,18 +231,18 @@ class menumanagement_model {
                     $parentItem['adminonly'] = $adminonly;
                     $parentItem['capability'] = $capability;
                     $parentItem['id'] = $menuItem->id;
-                    
+
                     // Generate node key.
                     $nodekey = $keyprefix.++$nodecount;
-                    
+
                     $items[$parentCnt] = $parentItem;
-                    
+
                     if(isset($menuItem->child))
                     {
                         $childItems = (array)$menuItem->child;
-                        
+
                         foreach($childItems as $childItem)
-                        {            
+                        {
                             $childItem = (array) $childItem;
                             $childItem['parent'] = 0;
 
@@ -243,17 +265,17 @@ class menumanagement_model {
                             $nodecount++;
                         }
                     }
-                    
-                    $parentCnt++;                                        
-                    
+
+                    $parentCnt++;
+
                 }
             }
         }
-                        
-        $items['totalItems'] = $nodecount;        
+
+        $items['totalItems'] = $nodecount;
         return $items;
-        
-        
+
+
     }
 
     public static function getAllCapability(){
@@ -296,4 +318,3 @@ class menumanagement_model {
         return false;
     }
 }
-	

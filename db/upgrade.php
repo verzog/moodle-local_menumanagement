@@ -14,6 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Local menu management navigation extension
+ *
+ * @package    local_menumanagement
+ * @copyright  2019 eCreators PTY LTD
+ */
+
 defined('MOODLE_INTERNAL') || die();
 
 /**

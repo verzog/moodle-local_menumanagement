@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param global_navigation $navigation
  */
 function local_menumanagement_extend_navigation(global_navigation $navigation) {
-    $menu_enabled = get_config('local_menumanagement', 'use_menumanagement');
+    $menu_enabled = get_config('theme_learnbook', 'use_menumanagement');
     if ($menu_enabled) {
         global $CFG, $PAGE, $COURSE;
 

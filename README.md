@@ -4,7 +4,7 @@ Learnbook menu management is a custom menu manager which allows you to override 
 
 ### Extensive Documentation ###
 Get your answers quickly, from our very own support site:
-https://support.ecreators.com.au/hc/en-us/articles/360000421015-How-to-configure-the-Learnbook-Menu
+######
 
 ## Contributing ##
 Any type of contribution, suggestions, feature request is welcome.

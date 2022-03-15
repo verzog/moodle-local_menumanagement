@@ -11,6 +11,5 @@ Any type of contribution, suggestions, feature request is welcome.
 Please create an issue in GitHub to discuss before doing a pull request.
 
 -----------
-This plugin was developed by eCreators PTY LTD <br>
-https://ecreators.com.au/ <br>
-<img alt="eCreators" src="https://ecreators.com.au/wp-content/uploads/2018/03/eCreators-logo.png" width="400">
+This plugin was FORKED from eCreators PTY LTD <br>
+
